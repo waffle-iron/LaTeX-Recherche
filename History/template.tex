@@ -1,0 +1,105 @@
+%% Informationen zusammengetragen aus dem Online Tutorial
+%% LaTeX für Studierende und Wissenschaftler
+%% https://www.video2brain.com/de/videotraining/latex-fuer-studierende-und-wissenschaftler
+%%
+
+
+
+%% Optionale spezielle Informationen für einige TeX Compiler 
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+% Dokumentklasse Standardbuch
+\documentclass{book}
+
+%% Eingabekodierung auf Unicode UTF8 setzen
+%% (Muss mit Dateikodierung übereinstimmen, tut sie bei Windows 10)
+\usepackage[utf8]{inputenc}
+
+%% Neue Deutsche Rechtschreibung als Dokumentensprache festlegen
+%% Wichtig für Trennung, Ligaturen, generierte Texte etc.
+\usepackage[ngerman]{babel}
+
+%% Schriftkodierung auf 8 Bit festlegen
+%% Schreibt ein Ü in das generierte PDF an Stelle eines ¨U
+\usepackage[T1]{fontenc}
+
+%% Vereinfachung von Zitaten
+\usepackage[autostyle,german=quotes]{csquotes}
+
+%% Handling von Literaturzitaten
+%% Volles Zitat, verweist bei Wiederholung auf vorherige Anmerkung, nutzt 'ebendar' bei aufeinanderfolgenden Wiederholungen
+\usepackage[style=verbose-inote]{biblatex}
+
+%% Einzubindende Literaturdatei
+\bibliography{literatur}
+
+%% Zu Referenzen im Dokument kann via Klick navigiert werden
+\usepackage{hyperref} 
+
+
+%% Metadaten für die Titelseite
+\author{Marco Feltmann}
+\title{Vorlage für Philomel}
+\date{29. Januar 2017}
+
+%% Zitatblock eine Schriftgröße kleiner darstellen als Fließtext benögit zwei Pakete und einen Befehl.
+%% Größen relativ anpassen. \smaller, \larger etc.pp.
+%% Als Erweiterung zu den fixen \small, \large etc.pp.
+\usepackage{relsize}
+%% Sammlung von Werkzeugen, die an beliebigen Stellen im Satz eingreifen können.
+
+%% Um in die Makro-Engine einzugreifen, muss das Sonderzeichen @ als normaler Buchstabe behandelt werden.
+\makeatletter
+%% An das Makro "quote" wird der Befehl "smaller" angehängt.
+%% Dadurch wird der Text relativ zur aktuellen Schriftart kleiner.
+\g@addto@macro\quote{\smaller}
+%% FÜr den Rest des Dokumentes soll @ wieder als Sonderzeichen behandelt werden.
+\makeatother
+
+%% Nur für dieses Dokument. :)
+% Andere Schriftart
+\usepackage{droid}
+
+%% Hier fängt dann das Dokument an.
+\begin{document}
+
+%% Titelseite erstellen
+\maketitle
+
+%% Inhaltsverzeichnis erstellen
+\tableofcontents
+	
+\chapter{Literaturzitate}
+
+\section{Inline Zitate}
+
+\enquote{Ein Zitat.}\autocite{Barry2010} zu dem jemand anderes \enquote{Schlaue Sachen!}\autocite{Griffiths2009} sagte.
+
+\section{Blockzitate}
+
+Mittels der Umgebung \enquote{quote} lässt sich ein Blockzitat einrichten, welches vom Rest des Textes durch Einrücken abgesetzt ist.
+
+\begin{quote}
+	In diesem Zitat finden wir sehr viele Sätze, Zeilen, Wörter und Zeichen sowie sogar den einen oder anderen Absatz. Erstaunlich, nicht wahr.
+	
+	Ja, das ist es.\autocite{Barry2010}
+\end{quote}
+
+Die Umgebung \enquote{quotation} agiert so ähnlich, übernimmt allerdings sämtliche Einstellungen, die auch für den Fließtext im Dokument gelten. Im Gegensatz zum vorherigen Beispiel werden also hier die Absätze noch einmal zusätzlich eingerückt.
+
+Ob das so gewollt ist liegt im Auge des Betrachters.
+Wie dem auch sei wird in diesem Fall die Schriftgröße nicht reduziert, da nur die \enquote{quote} Umgebung überschrieben wird, nicht die \enquote{quotation}
+\begin{quotation} Auch in diesem Zitat finden wir sehr viele Sätze, Zeilen, Wörter und Zeichen sowie sogar den einen oder anderen Absatz. 
+	
+	Allerdings übernimmt diese Zitatumgebung die Voreinstellungen aus dem Fließtext, was mitunter nicht so gern gesehen wird und entsprechend vermieden werden könnte.\autocite{Barry2010}
+\end{quotation}
+
+%% Falls gewünscht lassen sich auch Verzeichnisse über Graphiken und Tabellen generieren.
+% \listoffigures
+% \listoftables
+
+%% Falls eine Angabe zur Bibliographie gewünsch wird	
+% \printbibliography
+	
+\end{document}
