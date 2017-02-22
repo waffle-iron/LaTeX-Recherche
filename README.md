@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/marcofeltmann/LaTeX-Recherche.png?label=ready&title=Ready)](https://waffle.io/marcofeltmann/LaTeX-Recherche)
 # LaTeX-Recherche
 Some (still growing) templates to play with
 
